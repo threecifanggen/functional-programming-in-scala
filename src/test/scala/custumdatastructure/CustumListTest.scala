@@ -1,4 +1,4 @@
-package example
+package customlisttest
 
 import org.scalatest.FunSuite
 
@@ -18,7 +18,7 @@ class CtListTest extends FunSuite {
         assert(foldLeft(a, 1)(_ + _) == 29)
     }
 
-    test("folsLeft(Nil, 1)(_+_) == 1") {
+    test("foldLeft(Nil, 1)(_+_) == 1") {
         assert(foldLeft(Nil: CtList[Int], 1)(_ + _) == 1)
     }
 
@@ -37,5 +37,8 @@ class CtListTest extends FunSuite {
     test("a add 1 is CtList(2, 3, 4, 5, 6, 7, 8)") {
         assert(addOne(a) == CtList(2, 3, 4, 5, 6, 7, 8))
     }
-}
 
+    test("a map add 1 is addOne(a)") {
+        assert(addOne(a) == map(a)(_+1))
+    }
+}
