@@ -97,9 +97,16 @@ object CtList {
             case CtCons(x, xs) => CtCons(x, append2(xs, a2))
         })
 
-    //练习3.15
+    //练习3.16
     def addOne(ns: CtList[Int]): CtList[Int] = foldLeft(ns, Nil: CtList[Int])((x, ll) => ll match {
         case Nil => CtList(x+1)
         case CtCons(xx, xxs) => append(ll, CtList(x + 1))
     })
+
+    //联系3.18
+    def map[A, B](as: CtList[A])(f: A => B): CtList[B] = as match {
+        case Nil => Nil
+        case CtCons(xx, xxs) => CtCons(f(xx), map(xxs)(f))
+    }
 }
+
