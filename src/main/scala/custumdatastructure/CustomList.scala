@@ -103,7 +103,7 @@ object CtList {
         case CtCons(xx, xxs) => append(ll, CtList(x + 1))
     })
 
-    //联系3.18
+    //练习3.18
     def map[A, B](as: CtList[A])(f: A => B): CtList[B] = as match {
         case Nil => Nil
         case CtCons(xx, xxs) => CtCons(f(xx), map(xxs)(f))
