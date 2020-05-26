@@ -18,4 +18,13 @@ class CustomMonoidTest extends FunSuite {
         assert(boolOr.op(a1, a2) == true)
         assert(boolAnd.op(a1, a2) == false)
     }
+
+    test("concatenate(1, 2, 3, 4, 5) is 12345") {
+        val a = List("1", "2", "3", "4", "5")
+        val b = List(1, 2, 3, 4, 5)
+        val c = IndexedSeq(1, 2, 3, 4, 5)
+        assert(concatenate(a, stringMonoid) == "12345")
+        assert(foldMap(b, stringMonoid)(_.toString) == "12345")
+        assert(foldMapV(c, stringMonoid)(_.toString) == "12345")
+    }
 }
